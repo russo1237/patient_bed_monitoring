@@ -1,0 +1,34 @@
+{% extends 'bed_monitoring_app/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="cotainer">
+  <div class="jumbotron">
+    <div class="container">
+
+      <h1>
+        <span class="border border-success">
+          Update the details as Number of beds, Govt beds, Hospital Beds etc.
+        </span>
+      </h1>
+
+    </div>
+  <div class="contaier">
+      <div class="jumbotron">
+        <form class="" action="" method="post">
+          <label for="Number of Beds">Number of Beds:</label>
+          <input type="number" name="Number of beds" placeholder="Enter total number of beds"><br>
+          <label for="Govt Beds">Govt Beds:</label>
+          <input type="number" name="Govt beds" placeholder="Enter total number of govt beds"><br>
+          <label for="Hospital Beds">Hospital Beds:</label>
+          <input type="number" name="Hospital beds" placeholder="Enter total number of Hospital beds"><br>
+          <input type="submit" name="submit" value="Submit">
+        </form>
+      </div>
+  </div>
+
+
+
+  </div>
+</div>
+
+{% endblock %}
