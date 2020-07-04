@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from bed_monitoring_app.models import HospitalBedDetails
 
 # Create your views here.
 
@@ -71,4 +72,23 @@ def about_us(request):
     return render(request, 'bed_monitoring_app/about_us.html')
 
 def update_details(request):
+    if request.method == 'POST':
+        print("in update details")
+
+        h_bed_info = HospitalBedDetails()
+        h_bed_info.user = request.user
+        h_bed_info.total_no_of_beds = int(request.POST.get('no_of_beds'))
+        h_bed_info.total_govt_beds = int(0.8 * (h_bed_info.total_no_of_beds))
+        h_bed_info.total_hospital_beds = int(0.2 *(h_bed_info.total_no_of_beds))
+        h_bed_info.save()
+        beds_dict = {'total_no_of_beds':h_bed_info.total_no_of_beds,
+                    'total_govt_beds': h_bed_info.total_govt_beds,
+                    'total_hospital_beds': h_bed_info.total_hospital_beds,
+                    'occupied_govt_beds': h_bed_info.occupied_govt_beds,
+                    'occupied_hospital_beds': h_bed_info.occupied_hospital_beds, }
+        # import pdb;pdb.set_trace()
+        return render(request, 'bed_monitoring_app/hospital_info.html', {'beds_dict':beds_dict})
     return render(request, 'bed_monitoring_app/update_details.html')
+
+def page_after_login(request):
+    return render(request,'bed_monitoring_app/first_page.html')

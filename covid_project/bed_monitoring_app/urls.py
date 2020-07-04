@@ -12,5 +12,6 @@ urlpatterns = [
     path('about_us/', views.about_us, name = 'about_us'),
     path('update_details/', views.update_details, name ='update_details'),
     path('logout/', views.logout_view, name='logout'),
+    # path('hospital_details/', views.update_details, name='hospital_details'),
 
 ]
