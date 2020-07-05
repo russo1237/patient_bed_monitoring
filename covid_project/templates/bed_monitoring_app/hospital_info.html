@@ -1,0 +1,30 @@
+{% extends 'bed_monitoring_app/base.html' %}
+{% load static %}
+{% block body_block %}
+  <div class="cotainer">
+    <div class="jumbotron">
+      <table class='table table-bordered' align='center'>
+        <thead class="thead-dark" align='center'>
+          <tr>
+            <th>Total Number of Beds</th>
+            <th>Beds at Govt Rate</th>
+            <th>Beds occupied with Govt Rate</th>
+            <th>Bed at Hospital Rate</th>
+            <th>Beds occupied with Hospital Rate</th>
+          </tr>
+        </thead>
+        <tbody align='center'>
+          <tr class="table-primary">
+            <td>{{ beds_dict.total_no_of_beds }}</td>
+            <td>{{ beds_dict.total_govt_beds }}</td>
+            <td>{{ beds_dict.occupied_govt_beds }}</td>
+            <td>{{ beds_dict.total_hospital_beds}}</td>
+            <td>{{ beds_dict.occupied_hospital_beds }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+{% endblock %}

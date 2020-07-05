@@ -4,24 +4,32 @@
 <div class="cotainer">
   <div class="jumbotron">
     <div class="container">
+      <div class="container">
+        <h1 align='center'>
+          <span class="border border-success">
+            Bed Details in the Hospital
+          </span>
+        </h1>
+      </div>
 
-      <h1>
-        <span class="border border-success">
-          Update the details as Number of beds, Govt beds, Hospital Beds etc.
-        </span>
-      </h1>
 
     </div>
   <div class="contaier">
       <div class="jumbotron">
-        <form class="" action="" method="post">
-          <label for="Number of Beds">Number of Beds:</label>
-          <input type="number" name="Number of beds" placeholder="Enter total number of beds"><br>
-          <label for="Govt Beds">Govt Beds:</label>
-          <input type="number" name="Govt beds" placeholder="Enter total number of govt beds"><br>
-          <label for="Hospital Beds">Hospital Beds:</label>
-          <input type="number" name="Hospital beds" placeholder="Enter total number of Hospital beds"><br>
-          <input type="submit" name="submit" value="Submit">
+        <form class="" action="{% url 'bed_monitoring_app:update_details' %}" method="post">
+              <div class="form-group">
+                {% csrf_token %}
+                <label for="no_of_beds">Number of Beds:</label>
+                <input class='form-control' type="number" name="no_of_beds" placeholder="Enter total number of beds"><br>
+                <p></p>
+                <!-- <label for="govt_Beds">Govt Beds:</label>
+                <input class='form-control' type="number" name="govt_beds" placeholder="Enter total number of govt beds"><br>
+                <p></p>
+                <label for="hospital_Beds">Hospital Beds:</label>
+                <input class='form-control' type="number" name="hospital_beds" placeholder="Enter total number of Hospital beds"><br>
+                <p></p> -->
+                <input class='btn btn-primary' type="submit" name="submit" value="Submit">
+             </div>
         </form>
       </div>
   </div>
