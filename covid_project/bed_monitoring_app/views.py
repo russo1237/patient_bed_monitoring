@@ -55,9 +55,9 @@ def user_login(request):
             else:
                 return HttpResponse("Account not active")
         else:
-            print("Tried to login but failed")
+            # print("Tried to login but failed")
             print("Username: {} and password {}".format(username, password))
-            return HttpResponse("Invalid login credentials")
+            return render(request,'bed_monitoring_app/invalid_login.html')
 
     else:
         return render(request, 'bed_monitoring_app/login.html', {})
@@ -86,7 +86,6 @@ def update_details(request):
                     'total_hospital_beds': h_bed_info.total_hospital_beds,
                     'occupied_govt_beds': h_bed_info.occupied_govt_beds,
                     'occupied_hospital_beds': h_bed_info.occupied_hospital_beds, }
-        # import pdb;pdb.set_trace()
         return render(request, 'bed_monitoring_app/hospital_info.html', {'beds_dict':beds_dict})
     return render(request, 'bed_monitoring_app/update_details.html')
 

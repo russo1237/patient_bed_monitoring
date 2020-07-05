@@ -1,0 +1,12 @@
+{% extends 'bed_monitoring_app/base.html' %}
+{% load static %}
+{% block body_block %}
+  <div class="jumbotron" align='center'>
+    <h1 style="text-align:center">Invalid login credentials</h1>
+
+    <h2>Please try logging in again </h2>
+      <a class="nav-item nav-link" href="{% url 'bed_monitoring_app:user_login' %}">
+        <button type="button" class="btn btn-outline-primary">Login</button>
+      </a>
+
+{% endblock %}
