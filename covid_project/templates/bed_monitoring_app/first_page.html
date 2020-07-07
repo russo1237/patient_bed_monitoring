@@ -1,0 +1,70 @@
+{% extends 'bed_monitoring_app/base.html' %}
+{% load static %}
+{% block body_block %}
+
+<div class="cotainer">
+  <div class="jumbotron">
+    <div class="container">
+
+      <h1>
+        <span class="border border-success">
+          Welcome to the covid-19 patients bed monitoring platform
+        </span>
+      </h1>
+    </div>
+
+
+  </div>
+</div>
+<div class="cotainer">
+  <div class="jumbotron">
+    <table class='table table-bordered' align='center'>
+      <thead class="thead-dark" align='center'>
+        <tr>
+          <th>Total Number of Beds</th>
+          <th>Beds at Govt Rate</th>
+          <th>Beds occupied with Govt Rate</th>
+          <th>Bed at Hospital Rate</th>
+          <th>Beds occupied with Hospital Rate</th>
+        </tr>
+      </thead>
+      <tbody align='center'>
+        <tr class="table-primary">
+          <td>{{ beds_dict.total_no_of_beds }}</td>
+          <td>{{ beds_dict.total_govt_beds }}</td>
+          <td>{{ beds_dict.occupied_govt_beds }}</td>
+          <td>{{ beds_dict.total_hospital_beds}}</td>
+          <td>{{ beds_dict.occupied_hospital_beds }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+        <form class="form-group" action="" method="post">
+          {% csrf_token %}
+          <label for="govt_beds">Update govt beds</label>
+          <input class="form-control" type="number" name="govt_beds" value="">
+          <input type="submit" class='btn btn-primary' name="" value="Update"><br>
+          <p></p>
+          <label for="hos_beds">Update Hospitial beds</label>
+          <input class="form-control" type="number" name="hos_beds" value="">
+          <input type="submit" class='btn btn-primary' name="" value="Update"><br>
+          <p></p>
+          <label for="total_beds">Update Total beds</label>
+          <input class="form-control" type="number" name="total_beds" value="">
+          <input type="submit" class='btn btn-primary' name="" value="Update"><br>
+          <p></p>
+        </form>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

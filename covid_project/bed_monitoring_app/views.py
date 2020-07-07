@@ -50,8 +50,18 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('bed_monitoring_app:update_details'))
-
+                bed_details_user = HospitalBedDetails.objects.filter(user=user)
+                # bed_details_test= HospitalBedDetails.objects.filter(user=user)
+                latest_object = len(bed_details_user)-1
+                bed_details = bed_details_user[latest_object]
+                beds_dict = {'total_no_of_beds':bed_details.total_no_of_beds,
+                            'total_govt_beds': bed_details.total_govt_beds,
+                            'total_hospital_beds': bed_details.total_hospital_beds,
+                            'occupied_govt_beds': bed_details.occupied_govt_beds,
+                            'occupied_hospital_beds': bed_details.occupied_hospital_beds, }
+                # import pdb;pdb.set_trace()
+                # return HttpResponseRedirect(reverse('bed_monitoring_app:first_page', {'beds_dict':beds_dict}))
+                return render(request, 'bed_monitoring_app/first_page.html', {'beds_dict':beds_dict})
             else:
                 return HttpResponse("Account not active")
         else:
