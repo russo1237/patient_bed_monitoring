@@ -1,0 +1,39 @@
+{% extends 'bed_monitoring_app/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="cotainer">
+  <div class="jumbotron">
+    <div class="container">
+      <div class="container">
+        <h1 align='center'>
+          <span class="border border-success">
+            Bed Details in the Hospital
+          </span>
+        </h1>
+      </div>
+
+
+    </div>
+  <div class="contaier">
+      <div class="jumbotron">
+        <form class="" action="{% url 'bed_monitoring_app:update_hos_beds' %}" method="post">
+              <div class="form-group">
+                {% csrf_token %}
+                <label for="hospital_Beds">Update number of Hospital Beds:</label>
+                <input class='form-control' type="number" name="hospital_beds" placeholder="Enter total number of Hospital beds"><br>
+                <p></p>
+                <input class='btn btn-primary' type="submit" name="submit" value="Submit">
+             </div>
+        </form>
+        <a href="{% url 'bed_monitoring_app:first_page' %}">
+          <input class="btn btn-warning" type="submit" name="Back" value="Back">
+        </a>
+      </div>
+  </div>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -46,21 +46,28 @@
 <div class="container">
   <div class="jumbotron">
     <div class="container">
-        <form class="form-group" action="" method="post">
+        <form class="form-group" action="{% url 'bed_monitoring_app:update_govt_beds' %}" method="get">
           {% csrf_token %}
           <label for="govt_beds">Update govt beds</label>
-          <input class="form-control" type="number" name="govt_beds" value="">
-          <input type="submit" class='btn btn-primary' name="" value="Update"><br>
+          <!-- <input class="form-control" type="number" name="govt_beds" value=""> -->
+          <input type="submit" class='btn btn-primary' name="govt_beds" value="Update"><br>
+        </form>
           <p></p>
+        <form class="form-group" action="{% url 'bed_monitoring_app:update_hos_beds' %}" method="post">
+            {% csrf_token %}
           <label for="hos_beds">Update Hospitial beds</label>
-          <input class="form-control" type="number" name="hos_beds" value="">
-          <input type="submit" class='btn btn-primary' name="" value="Update"><br>
-          <p></p>
-          <label for="total_beds">Update Total beds</label>
-          <input class="form-control" type="number" name="total_beds" value="">
-          <input type="submit" class='btn btn-primary' name="" value="Update"><br>
+          <!-- <input class="form-control" type="number" name="hos_beds" value=""> -->
+          <input type="submit" class='btn btn-primary' name="hos_beds" value="Update"><br>
           <p></p>
         </form>
+        <form class="form-group" action="{% url 'bed_monitoring_app:update_bed_details' %}" method="get">
+          {% csrf_token %}
+          <label for="total_beds">Update Total beds</label>
+          <!-- <input class="form-control" type="number" name="total_beds" value=""> -->
+          <input type="submit" class='btn btn-primary' name="total_beds" value="Update"><br>
+        </form>
+          <p></p>
+
     </div>
 
   </div>
