@@ -60,8 +60,8 @@ def user_login(request):
                             'occupied_govt_beds': bed_details.occupied_govt_beds,
                             'occupied_hospital_beds': bed_details.occupied_hospital_beds, }
                 # import pdb;pdb.set_trace()
-                # return HttpResponseRedirect(reverse('bed_monitoring_app:first_page', {'beds_dict':beds_dict}))
-                return render(request, 'bed_monitoring_app/first_page.html', {'beds_dict':beds_dict})
+                return HttpResponseRedirect(reverse('bed_monitoring_app:update_bed_details'))
+                # return render(request, 'bed_monitoring_app/first_page.html', {'beds_dict':beds_dict})
             else:
                 return HttpResponse("Account not active")
         else:
