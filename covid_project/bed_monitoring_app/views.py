@@ -104,37 +104,45 @@ def update_bed_details(request):
 def update_govt_beds(request):
     if request.method == 'POST':
         print("in update details")
+        user = request.user
+        bed_details_user = HospitalBedDetails.objects.filter(user=user)
+        latest_object = len(bed_details_user)-1
+        bed_details = bed_details_user[latest_object]
+        gov_beds = int(request.POST.get('govt_beds'))
+        if gov_beds > bed_details.total_govt_beds:
+            return HttpResponse('Total no of govt beds updated exceeds the limit')
+        bed_details.occupied_govt_beds = gov_beds
+        bed_details.save()
+        beds_dict = {'total_no_of_beds':bed_details.total_no_of_beds,
+                    'total_govt_beds': bed_details.total_govt_beds,
+                    'total_hospital_beds': bed_details.total_hospital_beds,
+                    'occupied_govt_beds': bed_details.occupied_govt_beds,
+                    'occupied_hospital_beds': bed_details.occupied_hospital_beds, }
+        return render(request, 'bed_monitoring_app/hospital_info.html', {'beds_dict':beds_dict})
 
-        # h_bed_info = HospitalBedDetails()
-        # h_bed_info.user = request.user
-        # h_bed_info.total_no_of_beds = int(request.POST.get('no_of_beds'))
-        # h_bed_info.total_govt_beds = int(0.8 * (h_bed_info.total_no_of_beds))
-        # h_bed_info.total_hospital_beds = int(0.2 *(h_bed_info.total_no_of_beds))
-        # h_bed_info.save()
-        # beds_dict = {'total_no_of_beds':h_bed_info.total_no_of_beds,
-        #             'total_govt_beds': h_bed_info.total_govt_beds,
-        #             'total_hospital_beds': h_bed_info.total_hospital_beds,
-        #             'occupied_govt_beds': h_bed_info.occupied_govt_beds,
-        #             'occupied_hospital_beds': h_bed_info.occupied_hospital_beds, }
-        # return render(request, 'bed_monitoring_app/hospital_info.html', {'beds_dict':beds_dict})
+
     return render(request, 'bed_monitoring_app/update_govt_beds.html')
 
 def update_hos_beds(request):
     if request.method == 'POST':
         print("in update details")
+        user = request.user
+        bed_details_user = HospitalBedDetails.objects.filter(user=user)
+        latest_object = len(bed_details_user)-1
+        bed_details = bed_details_user[latest_object]
+        # import pdb;pdb.set_trace()
+        hos_beds = int(request.POST.get('hospital_beds'))
+        if hos_beds > bed_details.total_hospital_beds:
+            return HttpResponse('Total no of hospital beds updated exceeds the limit')
+        bed_details.occupied_hospital_beds = hos_beds
+        bed_details.save()
+        beds_dict = {'total_no_of_beds':bed_details.total_no_of_beds,
+                    'total_govt_beds': bed_details.total_govt_beds,
+                    'total_hospital_beds': bed_details.total_hospital_beds,
+                    'occupied_govt_beds': bed_details.occupied_govt_beds,
+                    'occupied_hospital_beds': bed_details.occupied_hospital_beds, }
+        return render(request, 'bed_monitoring_app/hospital_info.html', {'beds_dict':beds_dict})
 
-        # h_bed_info = HospitalBedDetails()
-        # h_bed_info.user = request.user
-        # h_bed_info.total_no_of_beds = int(request.POST.get('no_of_beds'))
-        # h_bed_info.total_govt_beds = int(0.8 * (h_bed_info.total_no_of_beds))
-        # h_bed_info.total_hospital_beds = int(0.2 *(h_bed_info.total_no_of_beds))
-        # h_bed_info.save()
-        # beds_dict = {'total_no_of_beds':h_bed_info.total_no_of_beds,
-        #             'total_govt_beds': h_bed_info.total_govt_beds,
-        #             'total_hospital_beds': h_bed_info.total_hospital_beds,
-        #             'occupied_govt_beds': h_bed_info.occupied_govt_beds,
-        #             'occupied_hospital_beds': h_bed_info.occupied_hospital_beds, }
-        # return render(request, 'bed_monitoring_app/hospital_info.html', {'beds_dict':beds_dict})
     return render(request, 'bed_monitoring_app/update_hos_beds.html')
 
 def page_after_login(request):

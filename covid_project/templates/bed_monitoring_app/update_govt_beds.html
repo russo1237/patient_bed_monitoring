@@ -16,7 +16,7 @@
     </div>
   <div class="contaier">
       <div class="jumbotron">
-        <form class="" action="{% url 'bed_monitoring_app:update_bed_details' %}" method="post">
+        <form class="" action="{% url 'bed_monitoring_app:update_govt_beds' %}" method="post">
               <div class="form-group">
                 {% csrf_token %}
                 <label for="govt_Beds">Update number of Govt Beds:</label>
