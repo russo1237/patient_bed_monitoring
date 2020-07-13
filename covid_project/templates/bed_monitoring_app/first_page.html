@@ -53,7 +53,7 @@
           <input type="submit" class='btn btn-primary' name="govt_beds" value="Update"><br>
         </form>
           <p></p>
-        <form class="form-group" action="{% url 'bed_monitoring_app:update_hos_beds' %}" method="post">
+        <form class="form-group" action="{% url 'bed_monitoring_app:update_hos_beds' %}" method="get">
             {% csrf_token %}
           <label for="hos_beds">Update Hospitial beds</label>
           <!-- <input class="form-control" type="number" name="hos_beds" value=""> -->
