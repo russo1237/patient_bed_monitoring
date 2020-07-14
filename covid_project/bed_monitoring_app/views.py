@@ -118,9 +118,11 @@ def update_bed_details(request):
         if len(object_h_bed)==0:
             h_bed_info = HospitalBedDetails()
             h_bed_info.user = request.user
+            total_beds = int(request.POST.get('no_of_beds'))
+            import pdb;pdb.set_trace()
             h_bed_info.total_no_of_beds = int(request.POST.get('no_of_beds'))
-            h_bed_info.total_govt_beds = int(0.8 * (h_bed_info.total_no_of_beds))
-            h_bed_info.total_hospital_beds = int(0.2 *(h_bed_info.total_no_of_beds))
+            h_bed_info.total_govt_beds = round(0.8 *  (h_bed_info.total_no_of_beds))
+            h_bed_info.total_hospital_beds = round(0.2 * (h_bed_info.total_no_of_beds))
             h_bed_info.save()
             beds_dict = {'total_no_of_beds':h_bed_info.total_no_of_beds,
                         'total_govt_beds': h_bed_info.total_govt_beds,
@@ -137,8 +139,8 @@ def update_bed_details(request):
         h_bed_info = HospitalBedDetails()
         h_bed_info.user = request.user
         h_bed_info.total_no_of_beds = int(request.POST.get('no_of_beds'))
-        h_bed_info.total_govt_beds = int(0.8 *(h_bed_info.total_no_of_beds))
-        h_bed_info.total_hospital_beds = int(0.2 *(h_bed_info.total_no_of_beds))
+        h_bed_info.total_govt_beds = round(0.8 *(h_bed_info.total_no_of_beds))
+        h_bed_info.total_hospital_beds = round(0.2 *(h_bed_info.total_no_of_beds))
         h_bed_info.save()
         beds_dict = {'total_no_of_beds':h_bed_info.total_no_of_beds,
                     'total_govt_beds': h_bed_info.total_govt_beds,
@@ -210,6 +212,9 @@ def user_dashboard(request):
         user = request.user
         if user.is_authenticated:
             bed_details_user = HospitalBedDetails.objects.filter(user=request.user)
+            length_bed_details = len(bed_details_user)
+            if length_bed_details==0:
+                return render(request,'bed_monitoring_app/login.html')
             latest_object = len(bed_details_user)-1
             bed_details = bed_details_user[latest_object]
             beds_dict = {'total_no_of_beds':bed_details.total_no_of_beds,
