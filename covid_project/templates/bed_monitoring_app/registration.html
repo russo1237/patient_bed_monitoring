@@ -5,14 +5,20 @@
   {% if registered %}
     <h1>Thank for for registering</h1>
   {% else %}
-    <h1 style='text-align:center'>Register Here</h1>
-    <h2>Fill out the form :</h2>
+    <h1 style='text-align:center'>Register Here</h1><br>
+    <p></p>
+    <h2 align='center'>Fill out the form :</h2><br>
+    <p></p>
 
     <form enctype="multipart/form-data" method="post">
-      {% csrf_token %}
-      {{ user_form.as_p }}
-      {{ profile_form.as_p }}
-      <input type="submit" name="" value="Register">
+      <div class="form-group" align='center'>
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input class='btn btn-primary' type="submit" name="" value="Register">
+
+
+      </div>
 
     </form>
 
