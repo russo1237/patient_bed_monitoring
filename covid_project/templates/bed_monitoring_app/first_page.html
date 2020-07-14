@@ -23,18 +23,22 @@
         <tr>
           <th>Total Number of Beds</th>
           <th>Beds at Govt Rate</th>
-          <th>Beds occupied with Govt Rate</th>
           <th>Bed at Hospital Rate</th>
+          <th>Beds occupied with Govt Rate</th>
+          <th>Beds remaining at Govt Rate</th>
           <th>Beds occupied with Hospital Rate</th>
+          <th>Beds remaining at Hospital Rate</th>
         </tr>
       </thead>
       <tbody align='center'>
         <tr class="table-primary">
           <td>{{ beds_dict.total_no_of_beds }}</td>
           <td>{{ beds_dict.total_govt_beds }}</td>
-          <td>{{ beds_dict.occupied_govt_beds }}</td>
           <td>{{ beds_dict.total_hospital_beds}}</td>
-          <td>{{ beds_dict.occupied_hospital_beds }}</td>
+          <td style="color:#fc6203;">{{ beds_dict.occupied_govt_beds }}</td>
+          <td style="color:#35ab1d;">{{ beds_dict.remaining_govt_beds }} </td>
+          <td style="color:#fc6203;">{{ beds_dict.occupied_hospital_beds }}</td>
+          <td style="color:#35ab1d;">{{ beds_dict.remaining_hos_beds }}</td>
         </tr>
       </tbody>
     </table>
@@ -48,23 +52,31 @@
     <div class="container">
         <form class="form-group" action="{% url 'bed_monitoring_app:update_govt_beds' %}" method="get">
           {% csrf_token %}
-          <label for="govt_beds">Update govt beds</label>
-          <!-- <input class="form-control" type="number" name="govt_beds" value=""> -->
-          <input type="submit" class='btn btn-primary' name="govt_beds" value="Update"><br>
+          <div class="container" align='center'>
+            <h3><label align='center' class='label label-default'>Update Govt beds</label></h3>
+            <!-- <input class="form-control" type="number" name="govt_beds" value=""> -->
+            <input type="submit" class='form-control btn btn-primary' name="govt_beds" value="Update"><br>
+          </div>
+          <hr>
         </form>
           <p></p>
+
         <form class="form-group" action="{% url 'bed_monitoring_app:update_hos_beds' %}" method="get">
             {% csrf_token %}
-          <label for="hos_beds">Update Hospitial beds</label>
-          <!-- <input class="form-control" type="number" name="hos_beds" value=""> -->
-          <input type="submit" class='btn btn-primary' name="hos_beds" value="Update"><br>
-          <p></p>
+            <div class="contaier" align='center'>
+              <h3><label for="hos_beds">Update Hospitial beds</label></h3>
+              <input type="submit" class='form-control btn btn-primary' name="hos_beds" value="Update"><br>
+              <hr>
+              <p></p>
+            </div>
         </form>
         <form class="form-group" action="{% url 'bed_monitoring_app:update_bed_details' %}" method="get">
           {% csrf_token %}
-          <label for="total_beds">Update Total beds</label>
-          <!-- <input class="form-control" type="number" name="total_beds" value=""> -->
-          <input type="submit" class='btn btn-primary' name="total_beds" value="Update"><br>
+          <div class="contaier" align='center'>
+            <h3><label for="total_beds">Update Total beds</label></h3>
+            <input type="submit" class='form-control btn btn-primary' name="total_beds" value="Update"><br>
+          </div>
+          <hr>
         </form>
           <p></p>
 

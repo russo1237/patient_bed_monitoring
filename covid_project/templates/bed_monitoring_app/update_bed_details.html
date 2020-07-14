@@ -26,9 +26,11 @@
 
              </div>
         </form>
-        <a href="{% url 'bed_monitoring_app:first_page' %}">
+        <form class="" action="{% url 'bed_monitoring_app:user_dashboard' %}" method="post">
+          {% csrf_token %}
           <input class="btn btn-warning" type="submit" name="Back" value="Back">
-        </a>
+        </form>
+        
 
       </div>
   </div>

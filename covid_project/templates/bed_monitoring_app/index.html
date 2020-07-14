@@ -3,8 +3,10 @@
 {% block body_block %}
 <div class="cotainer">
   <div class="jumbotron">
-    <div class="container">
-
+    <div class="container" align='center'>
+      <h1 style="color:#fc6203;">Pandharpur Municipal Council, Pandharpur</h1>
+      <p></p>
+      <p></p>
       <h1>
         <span class="border border-success">
           Welcome to the covid-19 patients bed monitoring platform
@@ -24,8 +26,8 @@
               <th>Beds at Govt Rate</th>
               <th>Bed at Hospital Rate</th>
               <th>Beds occupied with Govt Rate</th>
-              <th>Beds occupied with Hospital Rate</th>
               <th>Beds remaining at Govt Rate</th>
+              <th>Beds occupied with Hospital Rate</th>
               <th>Beds remaining at Hospital Rate</th>
             </tr>
           </thead>
@@ -38,8 +40,8 @@
               <td>{{ hospital.total_govt_beds }}</td>
               <td>{{ hospital.total_hospital_beds}}</td>
               <td style="color:#fc6203;">{{ hospital.occupied_govt_beds }}</td>
-              <td style="color:#fc6203;">{{ hospital.occupied_hospital_beds }}</td>
               <td style="color:#35ab1d;">{{ hospital.remaining_govt_beds }} </td>
+              <td style="color:#fc6203;">{{ hospital.occupied_hospital_beds }}</td>
               <td style="color:#35ab1d;">{{ hospital.remaining_hos_beds }}</td>
             </tr>
             {% endfor %}
