@@ -119,7 +119,6 @@ def update_bed_details(request):
             h_bed_info = HospitalBedDetails()
             h_bed_info.user = request.user
             total_beds = int(request.POST.get('no_of_beds'))
-            import pdb;pdb.set_trace()
             h_bed_info.total_no_of_beds = int(request.POST.get('no_of_beds'))
             h_bed_info.total_govt_beds = round(0.8 *  (h_bed_info.total_no_of_beds))
             h_bed_info.total_hospital_beds = round(0.2 * (h_bed_info.total_no_of_beds))
