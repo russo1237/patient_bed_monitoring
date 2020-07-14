@@ -11,9 +11,34 @@
         </span>
       </h1>
     </div>
-
-
-
+  </div>
+</div>
+    <div class="container">
+      <div class="jumbotron">
+        <table class='table table-bordered' align='center'>
+          <thead class="thead-dark" align='center'>
+            <tr>
+              <th>Hospital Name</th>
+              <th>Total Number of Beds</th>
+              <th>Beds at Govt Rate</th>
+              <th>Beds occupied with Govt Rate</th>
+              <th>Bed at Hospital Rate</th>
+              <th>Beds occupied with Hospital Rate</th>
+            </tr>
+          </thead>
+          <tbody align='center'>
+            {% for hospital in beds_list %}
+            <tr class="table-primary">
+              <td>{{ hospital.hospital_name}}</td>
+              <td>{{ hospital.total_no_of_beds }}</td>
+              <td>{{ hospital.total_govt_beds }}</td>
+              <td>{{ hospital.occupied_govt_beds }}</td>
+              <td>{{ hospital.total_hospital_beds}}</td>
+              <td>{{ hospital.occupied_hospital_beds }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
   </div>
 </div>
 

@@ -1,15 +1,41 @@
 from django.shortcuts import render
 from bed_monitoring_app.forms import UserForm, UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from bed_monitoring_app.models import HospitalBedDetails
+from bed_monitoring_app.models import HospitalBedDetails, UserProfileInfo
 
 # Create your views here.
 
 def index(request):
-    return render(request,'bed_monitoring_app/index.html')
+    hospital_details_all = HospitalBedDetails.objects.all()
+    user_hospital_names = UserProfileInfo.objects.all()
+    users = User.objects.filter(is_superuser=False)
+    details_list = []
+    for user in users:
+        for i in reversed(range(len(hospital_details_all))):
+            if user == hospital_details_all[i].user:
+
+                profile_details = UserProfileInfo.objects.filter(user=user)
+                user_hospital_name = profile_details[0].hospital_name
+                details_list.append(
+                                    {'hospital_name':user_hospital_name,
+                                    'total_no_of_beds':hospital_details_all[i].total_no_of_beds,
+                                    'total_govt_beds':hospital_details_all[i].total_govt_beds,
+                                    'total_hospital_beds':hospital_details_all[i].total_hospital_beds,
+                                    'occupied_govt_beds':hospital_details_all[i].occupied_govt_beds,
+                                    'occupied_hospital_beds':hospital_details_all[i].occupied_hospital_beds,
+                                    })
+                break
+            else:
+                continue
+            # import pdb;pdb.set_trace()
+
+    # hospital_details_all
+    # import pdb;pdb.set_trace()
+    return render(request,'bed_monitoring_app/index.html',{'beds_list': details_list})
 
 def register(request):
     registered  = False
