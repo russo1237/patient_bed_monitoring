@@ -27,6 +27,8 @@ def index(request):
                                     'total_hospital_beds':hospital_details_all[i].total_hospital_beds,
                                     'occupied_govt_beds':hospital_details_all[i].occupied_govt_beds,
                                     'occupied_hospital_beds':hospital_details_all[i].occupied_hospital_beds,
+                                    'remaining_govt_beds': hospital_details_all[i].total_govt_beds-hospital_details_all[i].occupied_govt_beds,
+                                    'remaining_hos_beds': hospital_details_all[i].total_hospital_beds-hospital_details_all[i].occupied_hospital_beds,
                                     })
                 break
             else:
