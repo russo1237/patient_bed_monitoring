@@ -15,5 +15,6 @@ urlpatterns = [
     path('update_hos_beds/', views.update_hos_beds, name ='update_hos_beds'),
     path('logout/', views.logout_view, name='logout'),
     path('first_page/', views.page_after_login, name = 'first_page'),
+    path('user_dashboard/', views.user_dashboard, name= 'user_dashboard'),
 
 ]

@@ -8,18 +8,22 @@
           <tr>
             <th>Total Number of Beds</th>
             <th>Beds at Govt Rate</th>
-            <th>Beds occupied with Govt Rate</th>
             <th>Bed at Hospital Rate</th>
+            <th>Beds occupied with Govt Rate</th>
+            <th>Beds remaining at Govt Rate</th>
             <th>Beds occupied with Hospital Rate</th>
+            <th>Beds remaining at Hospital Rate</th>
           </tr>
         </thead>
         <tbody align='center'>
           <tr class="table-primary">
             <td>{{ beds_dict.total_no_of_beds }}</td>
             <td>{{ beds_dict.total_govt_beds }}</td>
-            <td>{{ beds_dict.occupied_govt_beds }}</td>
             <td>{{ beds_dict.total_hospital_beds}}</td>
-            <td>{{ beds_dict.occupied_hospital_beds }}</td>
+            <td style="color:#fc6203;">{{ beds_dict.occupied_govt_beds }}</td>
+            <td style="color:#35ab1d;">{{ beds_dict.remaining_govt_beds }} </td>
+            <td style="color:#fc6203;">{{ beds_dict.occupied_hospital_beds }}</td>
+            <td style="color:#35ab1d;">{{ beds_dict.remaining_hos_beds }}</td>
           </tr>
         </tbody>
       </table>

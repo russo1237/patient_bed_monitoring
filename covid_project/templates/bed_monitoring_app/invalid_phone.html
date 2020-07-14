@@ -1,0 +1,12 @@
+{% extends 'bed_monitoring_app/base.html' %}
+{% load static %}
+{% block body_block %}
+  <div class="jumbotron" align='center'>
+    <h1 style="text-align:center">Invalid phone Number</h1>
+
+    <h2>Please Enter valid phone number </h2>
+      <a class="nav-item nav-link" href="{% url 'bed_monitoring_app:register' %}">
+        <button type="button" class="btn btn-outline-primary">Back to register</button>
+      </a>
+
+{% endblock %}

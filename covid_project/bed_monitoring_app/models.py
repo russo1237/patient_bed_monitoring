@@ -9,6 +9,7 @@ class UserProfileInfo(models.Model):
     #additonal parameters needed
     hospital_name = models.CharField(max_length=40)
     address = models.TextField(max_length=70)
+    phone_no = models.IntegerField(default=0000000000)
 
     def __str__(self):
         return self.user.username

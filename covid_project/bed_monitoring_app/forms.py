@@ -17,7 +17,8 @@ class UserForm(forms.ModelForm):
 class UserProfileInfoForm(forms.ModelForm):
     hospital_name = forms.CharField(required= True)
     address = forms.CharField(required= True)
+    phone_no = forms.IntegerField(required=True)
 
     class Meta():
         model = UserProfileInfo
-        fields = ('hospital_name', 'address')
+        fields = ('hospital_name', 'address','phone_no')
