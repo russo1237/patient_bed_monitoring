@@ -7,8 +7,8 @@ class UserProfileInfo(models.Model):
     #relationship with user
     user = models.OneToOneField(User,on_delete=models.CASCADE,)
     #additonal parameters needed
-    hospital_name = models.CharField(max_length=40)
-    address = models.TextField(max_length=70)
+    hospital_name = models.CharField(max_length=100)
+    address = models.TextField(max_length=100)
     phone_no = models.IntegerField(default=0000000000)
 
     def __str__(self):
