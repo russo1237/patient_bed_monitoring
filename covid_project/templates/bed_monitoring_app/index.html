@@ -4,7 +4,7 @@
 <div class="cotainer">
   <div class="jumbotron">
     <div class="container" align='center'>
-      <h1 style="color:#fc6203;">Pandharpur Municipal Council, Pandharpur</h1>
+      <h1 style="color:#b94646;">Pandharpur Municipal Council, Pandharpur</h1>
       <p></p>
       <p></p>
       <h1>
@@ -15,37 +15,106 @@
     </div>
   </div>
 </div>
-    <div class="container">
-        <table class='table table-bordered' align='center'>
-          <thead class="thead-dark" align='center'>
-            <tr>
-              <th>Sr No</th>
-              <th>Hospital Name</th>
-              <th>Total Number of Beds</th>
-              <th>Beds at Govt Rate</th>
-              <th>Bed at Hospital Rate</th>
-              <th>Beds occupied with Govt Rate</th>
-              <th>Beds remaining at Govt Rate</th>
-              <th>Beds occupied with Hospital Rate</th>
-              <th>Beds remaining at Hospital Rate</th>
-            </tr>
-          </thead>
-          <tbody align='center'>
-            {% for hospital in beds_list %}
-            <tr class="table-primary">
-              <td>{{ forloop.counter}}</td>
-              <td>{{ hospital.hospital_name}}</td>
-              <td>{{ hospital.total_no_of_beds }}</td>
-              <td>{{ hospital.total_govt_beds }}</td>
-              <td>{{ hospital.total_hospital_beds}}</td>
-              <td style="color:#fc6203;">{{ hospital.occupied_govt_beds }}</td>
-              <td style="color:#35ab1d;">{{ hospital.remaining_govt_beds }} </td>
-              <td style="color:#fc6203;">{{ hospital.occupied_hospital_beds }}</td>
-              <td style="color:#35ab1d;">{{ hospital.remaining_hos_beds }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-</div>
+
+
+
+    <div class="jumbotron">
+      <h2>Covid Hospital Table :</h2>
+      <div class="table-responsive">
+
+      <table class='table table-bordered' align='center'>
+        <thead class="thead-dark" align='center'>
+          <tr>
+            <th>Sr No</th>
+            <th>Hospital Name</th>
+            <th>Total Number of Covid Beds</th>
+            <th>Covid Beds at Govt Rate</th>
+            <th>Covid Beds at Hospital Rate</th>
+            <th>Covid Beds occupied with Govt Rate</th>
+            <th>Covid Beds remaining at Govt Rate</th>
+            <th>Covid Beds occupied with Hospital Rate</th>
+            <th>Covid Beds remaining at Hospital Rate</th>
+            <th>Total O-2 Beds in Hospital</th>
+            <th>Occupied O-2 Beds in Hospital</th>
+            <th>Remaining O-2 Beds in Hospital</th>
+            <th>Total ICU Beds in Hospital</th>
+            <th>Occupied ICU Beds in Hospital</th>
+            <th>Remaining ICU Beds in Hospital</th>
+            <th>Total ICU-ventilator Beds in Hospital</th>
+            <th>Occupied ICU-ventilator Beds in Hospital</th>
+            <th>Remaining ICU-ventilator Beds in Hospital</th>
+            <!-- <th>Total Number of Beds</th>
+            <th>Beds at Govt Rate</th>
+            <th>Bed at Hospital Rate</th>
+            <th>Beds occupied with Govt Rate</th>
+            <th>Beds remaining at Govt Rate</th>
+            <th>Beds occupied with Hospital Rate</th>
+            <th>Beds remaining at Hospital Rate</th> -->
+          </tr>
+        </thead>
+        <tbody align='center'>
+          {% for hospital in beds_list %}
+          <tr class="table-primary">
+            <td>{{ forloop.counter}}</td>
+            <td>{{ hospital.hospital_name}}</td>
+            <td>{{ hospital.total_no_of_beds }}</td>
+            <td>{{ hospital.total_govt_beds }}</td>
+            <td>{{ hospital.total_hospital_beds}}</td>
+            <td style="color:#b94646;">{{ hospital.occupied_govt_beds }}</td>
+            <td style="color:#35ab1d;">{{ hospital.remaining_govt_beds }} </td>
+            <td style="color:#b94646;">{{ hospital.occupied_hospital_beds }}</td>
+            <td style="color:#35ab1d;">{{ hospital.remaining_hos_beds }}</td>
+            <td>{{ hospital.total_o2_beds}}</td>
+            <td style="color:#b94646;">{{ hospital.occupied_o2_beds }}</td>
+            <td style="color:#35ab1d;">{{ hospital.remaining_o2_beds }} </td>
+            <th>{{ hospital.total_icu_beds }}</th>
+            <td style="color:#b94646;">{{ hospital.occupied_icu_beds }}</td>
+            <td style="color:#35ab1d;">{{ hospital.remaining_icu_beds }} </td>
+            <td>{{ hospital.total_icu_ventilator_beds }}</td>
+            <td style="color:#b94646;">{{ hospital.occupied_icu_ventilator_beds }}</td>
+            <td style="color:#35ab1d;">{{ hospital.remaining_icu_ventilator_beds }} </td>
+            <!-- <td>{{ hospital.total_no_of_beds }}</td>
+            <td>{{ hospital.total_govt_beds }}</td>
+            <td>{{ hospital.total_hospital_beds}}</td>
+            <td style="color:#b94646;">{{ hospital.occupied_govt_beds }}</td>
+            <td style="color:#35ab1d;">{{ hospital.remaining_govt_beds }} </td>
+            <td style="color:#b94646;">{{ hospital.occupied_hospital_beds }}</td>
+            <td style="color:#35ab1d;">{{ hospital.remaining_hos_beds }}</td> -->
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+
+    <div class="jumbotron">
+
+      <h2>Covid Hospital Beds Under Mahatma Jyotiba Phule Jan Arogya Yojana :</h2>
+      <table class='table table-bordered' align='center'>
+        <thead class="thead-dark" align='center'>
+          <tr>
+            <th>Sr No</th>
+            <th>Hospital Name</th>
+            <th>Total Beds Under MJPJAY scheme</th>
+            <th>Occupied Beds Under MJPJAY Scheme</th>
+            <th>Remaining Beds Under MJPJAY Scheme</th>
+          </tr>
+        </thead>
+        <tbody align='center'>
+          {% for hospital in beds_list %}
+          <tr class="table-primary">
+            <td>{{ forloop.counter}}</td>
+            <td>{{ hospital.hospital_name}}</td>
+            <td>{{ hospital.total_beds_under_scheme }}</td>
+            <td style="color:#b94646;">{{ hospital.occupied_beds_under_scheme }}</td>
+            <td style="color:#35ab1d;">{{ hospital.remaining_beds_under_scheme }} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
 
 {% endblock %}

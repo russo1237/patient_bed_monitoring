@@ -10,6 +10,8 @@ class UserProfileInfo(models.Model):
     hospital_name = models.CharField(max_length=100)
     address = models.TextField(max_length=100)
     phone_no = models.IntegerField(default=0000000000)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user.username
@@ -21,5 +23,15 @@ class HospitalBedDetails(models.Model):
     total_no_of_beds = models.IntegerField()
     total_govt_beds = models.IntegerField()
     total_hospital_beds = models.IntegerField()
+    total_o2_beds = models.IntegerField()
+    total_icu_ventilator_beds = models.IntegerField()
+    total_beds_under_scheme = models.IntegerField()
+    total_icu_beds = models.IntegerField()
     occupied_govt_beds = models.IntegerField(default=0)
     occupied_hospital_beds = models.IntegerField(default=0)
+    occupied_o2_beds = models.IntegerField(default=0)
+    occupied_icu_ventilator_beds = models.IntegerField(default=0)
+    occupied_beds_under_scheme = models.IntegerField(default=0)
+    occupied_icu_beds = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
