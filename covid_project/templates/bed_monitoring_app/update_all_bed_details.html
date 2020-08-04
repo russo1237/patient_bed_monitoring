@@ -1,0 +1,53 @@
+{% extends 'bed_monitoring_app/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="cotainer">
+  <div class="jumbotron">
+    <div class="container">
+      <div class="container">
+        <h1 align='center'>
+          <span class="border border-success">
+            Bed Details in the Hospital
+          </span>
+        </h1>
+      </div>
+
+
+    </div>
+  <div class="contaier">
+      <div class="jumbotron">
+        <form class="" action="{% url 'bed_monitoring_app:update_all_bed_details' %}" method="post">
+              <div class="form-group">
+                {% csrf_token %}
+                <label for="no_of_beds">Number of Covid Beds:</label>
+                <input class='form-control' type="number" name="no_of_beds" placeholder="Enter total number of covid beds"><br>
+                <p></p>
+                <label for="no_of_o2_beds">Number of O-2 Beds in Hospital:</label>
+                <input class='form-control' type="number" name="no_of_o2_beds" placeholder="Enter total number of O-2 beds"><br>
+                <p></p>
+                <label for="no_of_icu_beds">Number of ICU Beds in Hospital:</label>
+                <input class='form-control' type="number" name="no_of_icu_beds" placeholder="Enter total number of ICU beds"><br>
+                <p></p>
+                <label for="no_of_icu_ventilator_beds">Number of ICU - ventilator Beds in Hospital:</label>
+                <input class='form-control' type="number" name="no_of_icu_ventilator_beds" placeholder="Enter total number of ICU ventilator beds"><br>
+                <p></p>
+
+                <input class='btn btn-primary' type="submit" name="submit" value="Submit">
+
+             </div>
+        </form>
+        <form class="" action="{% url 'bed_monitoring_app:user_dashboard' %}" method="post">
+          {% csrf_token %}
+          <input class="btn btn-warning" type="submit" name="Back" value="Back">
+        </form>
+
+
+      </div>
+  </div>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

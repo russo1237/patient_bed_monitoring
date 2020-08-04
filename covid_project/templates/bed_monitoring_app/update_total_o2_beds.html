@@ -16,11 +16,11 @@
     </div>
   <div class="contaier">
       <div class="jumbotron">
-        <form class="" action="{% url 'bed_monitoring_app:update_bed_details' %}" method="post">
+        <form class="" action="{% url 'bed_monitoring_app:update_total_o2_beds' %}" method="post">
               <div class="form-group">
                 {% csrf_token %}
-                <label for="no_of_beds">Number of Beds:</label>
-                <input class='form-control' type="number" name="no_of_beds" placeholder="Enter total number of beds"><br>
+                <label for="no_of_o2_beds">Total Number of O-2 Beds:</label>
+                <input class='form-control' type="number" name="no_of_o2_beds" placeholder="Enter total number of O-2 beds"><br>
                 <p></p>
                 <input class='btn btn-primary' type="submit" name="submit" value="Submit">
 
