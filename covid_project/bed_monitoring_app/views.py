@@ -167,6 +167,8 @@ def update_bed_details(request):
         h_bed_info.total_govt_beds = round(0.8 *(h_bed_info.total_no_of_beds))
         h_bed_info.total_hospital_beds = round(0.2 *(h_bed_info.total_no_of_beds))
         h_bed_info.total_beds_under_scheme = round(0.25 * (h_bed_info.total_govt_beds))
+        if (h_bed_info.total_no_of_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         h_bed_info.total_o2_beds = latest_object.total_o2_beds
         h_bed_info.total_icu_beds = latest_object.total_icu_beds
         h_bed_info.total_icu_ventilator_beds = latest_object.total_icu_ventilator_beds
@@ -175,6 +177,7 @@ def update_bed_details(request):
         h_bed_info.occupied_o2_beds = latest_object.occupied_o2_beds
         h_bed_info.occupied_icu_beds = latest_object.occupied_icu_beds
         h_bed_info.occupied_icu_ventilator_beds = latest_object.occupied_icu_ventilator_beds
+        h_bed_info.occupied_beds_under_scheme = latest_object.occupied_beds_under_scheme
         if h_bed_info.total_no_of_beds < latest_object.total_no_of_beds:
             if (h_bed_info.total_govt_beds < latest_object.occupied_govt_beds) or (h_bed_info.total_hospital_beds < latest_object.occupied_hospital_beds) :
                 return HttpResponse("Total number of beds availbale at govt rate/hosptial rate are less than occupied beds at govt rate/hospital rate . Please check once")
@@ -211,6 +214,8 @@ def update_govt_beds(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         gov_beds = int(request.POST.get('govt_beds'))
+        if (gov_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if gov_beds > bed_details.total_govt_beds:
             return HttpResponse('Total no of govt beds updated exceeds the limit')
         bed_details.occupied_govt_beds = gov_beds
@@ -248,6 +253,8 @@ def update_hos_beds(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         hos_beds = int(request.POST.get('hospital_beds'))
+        if (hos_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if hos_beds > bed_details.total_hospital_beds:
             return HttpResponse('Total no of hospital beds updated exceeds the limit')
         bed_details.occupied_hospital_beds = hos_beds
@@ -286,6 +293,8 @@ def update_o2_beds(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         o2_beds = int(request.POST.get('o2_Beds'))
+        if (o2_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if o2_beds > bed_details.total_o2_beds:
             return HttpResponse('Total no of O-2 beds updated exceeds the limit')
         bed_details.occupied_o2_beds = o2_beds
@@ -322,6 +331,8 @@ def update_icu_details(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         icu_beds = int(request.POST.get('icu_Beds'))
+        if (icu_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if icu_beds > bed_details.total_icu_beds:
             return HttpResponse('Total no of ICU beds updated exceeds the limit')
         bed_details.occupied_icu_beds = icu_beds
@@ -359,6 +370,8 @@ def update_icu_ventilator_details(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         icu_ventilator_beds = int(request.POST.get('ventilator_Beds'))
+        if (icu_ventilator_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if icu_ventilator_beds > bed_details.total_icu_ventilator_beds:
             return HttpResponse('Total no of ICU-ventilator beds updated exceeds the limit')
         bed_details.occupied_icu_ventilator_beds = icu_ventilator_beds
@@ -395,6 +408,8 @@ def update_total_icu_beds(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         icu_beds = int(request.POST.get('no_of_icu_beds'))
+        if (icu_beds< 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if icu_beds < bed_details.total_icu_beds:
             if (icu_beds < bed_details.occupied_icu_beds):
                 return HttpResponse('Total no of ICU beds are less than the occupied ICU beds currently')
@@ -432,6 +447,8 @@ def update_total_o2_beds(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         o2_beds = int(request.POST.get('no_of_o2_beds'))
+        if (o2_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if o2_beds < bed_details.total_o2_beds:
             if o2_beds < bed_details.occupied_o2_beds:
                 return HttpResponse('Total no of O-2 beds are less than the occupied O-2 beds currently')
@@ -469,6 +486,8 @@ def update_total_icu_ventilator_beds(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         icu_vent_beds = int(request.POST.get('no_of_iv_beds'))
+        if (icu_vent_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if icu_vent_beds < bed_details.total_icu_ventilator_beds:
             if icu_vent_beds < bed_details.occupied_icu_ventilator_beds:
                 return HttpResponse('Total no of ICU-ventilator beds are less than the occupied ICU-ventilator beds currently')
@@ -506,6 +525,8 @@ def update_beds_under_scheme_details(request):
         latest_object = len(bed_details_user)-1
         bed_details = bed_details_user[latest_object]
         scheme_beds = int(request.POST.get('scheme_Beds'))
+        if (scheme_beds < 0):
+            return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
         if scheme_beds > bed_details.total_beds_under_scheme:
             return HttpResponse('Total no of beds under scheme updated exceeds the limit')
         bed_details.occupied_beds_under_scheme = scheme_beds
@@ -547,11 +568,19 @@ def update_all_bed_details(request):
             h_bed_info.user = request.user
             total_beds = int(request.POST.get('no_of_beds'))
             h_bed_info.total_no_of_beds = int(request.POST.get('no_of_beds'))
+            if (h_bed_info.total_no_of_beds < 0):
+                return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
             h_bed_info.total_govt_beds = round(0.8 *  (h_bed_info.total_no_of_beds))
             h_bed_info.total_hospital_beds = round(0.2 * (h_bed_info.total_no_of_beds))
             h_bed_info.total_o2_beds = int(request.POST.get('no_of_o2_beds'))
+            if (h_bed_info.total_o2_beds < 0):
+                return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
             h_bed_info.total_icu_beds = int(request.POST.get('no_of_icu_beds'))
+            if (h_bed_info.total_icu_beds < 0):
+                return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
             h_bed_info.total_icu_ventilator_beds = int(request.POST.get('no_of_icu_ventilator_beds'))
+            if (h_bed_info.total_icu_ventilator_beds < 0):
+                return HttpResponse("You have entered negative value. Beds can not be negative.Enter valid number for beds.")
             h_bed_info.total_beds_under_scheme = round(0.25 * (h_bed_info.total_govt_beds))
             h_bed_info.save()
             beds_dict = {'total_no_of_beds':h_bed_info.total_no_of_beds,
