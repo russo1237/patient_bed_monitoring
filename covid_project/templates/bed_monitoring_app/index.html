@@ -27,6 +27,8 @@
           <tr>
             <th>Sr No</th>
             <th>Hospital Name</th>
+            <th>Phone Number</th>
+            <th>Address</th>
             <th>Total Number of Covid Beds</th>
             <th>Covid Beds at Govt Rate</th>
             <th>Covid Beds at Hospital Rate</th>
@@ -57,6 +59,8 @@
           <tr class="table-primary">
             <td>{{ forloop.counter}}</td>
             <td>{{ hospital.hospital_name}}</td>
+            <td>{{ hospital.phone_number}}</td>
+            <td>{{ hospital.address }}</td>
             <td>{{ hospital.total_no_of_beds }}</td>
             <td>{{ hospital.total_govt_beds }}</td>
             <td>{{ hospital.total_hospital_beds}}</td>

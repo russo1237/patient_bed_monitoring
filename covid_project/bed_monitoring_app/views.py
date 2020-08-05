@@ -40,7 +40,9 @@ def index(request):
                                     'remaining_o2_beds': hospital_details_all[i].total_o2_beds-hospital_details_all[i].occupied_o2_beds,
                                     'remaining_icu_beds': hospital_details_all[i].total_icu_beds-hospital_details_all[i].occupied_icu_beds,
                                     'remaining_icu_ventilator_beds': hospital_details_all[i].total_icu_ventilator_beds-hospital_details_all[i].occupied_icu_ventilator_beds,
-                                    'remaining_beds_under_scheme': hospital_details_all[i].total_beds_under_scheme-hospital_details_all[i].occupied_beds_under_scheme
+                                    'remaining_beds_under_scheme': hospital_details_all[i].total_beds_under_scheme-hospital_details_all[i].occupied_beds_under_scheme,
+                                    'phone_number':profile_details[0].phone_no,
+                                    'address':profile_details[0].address
                                     })
                 break
             else:
