@@ -29,7 +29,7 @@
             <th>Hospital Name</th>
             <th>Phone Number</th>
             <th>Address</th>
-            <th>Updated At</th>
+            <th>Last Updated At</th>
             <th>Total Number of Covid Beds</th>
             <th>Covid Beds at Govt Rate</th>
             <th>Covid Beds at Hospital Rate</th>
@@ -102,6 +102,7 @@
           <tr>
             <th>Sr No</th>
             <th>Hospital Name</th>
+            <th>Last Updated At</th>
             <th>Total Beds Under MJPJAY scheme</th>
             <th>Occupied Beds Under MJPJAY Scheme</th>
             <th>Remaining Beds Under MJPJAY Scheme</th>
@@ -112,6 +113,7 @@
           <tr class="table-primary">
             <td>{{ forloop.counter}}</td>
             <td>{{ hospital.hospital_name}}</td>
+            <td>{{ hospital.updated_at }}</td>
             <td>{{ hospital.total_beds_under_scheme }}</td>
             <td style="color:#b94646;">{{ hospital.occupied_beds_under_scheme }}</td>
             <td style="color:#35ab1d;">{{ hospital.remaining_beds_under_scheme }} </td>
